@@ -14,8 +14,11 @@
   "use strict";
 
   // Function to check if we're on a messages page
-  function isMessagesPage() {
-    return window.location.pathname.startsWith("/messages");
+  function isPageOk() {
+    return (
+      window.location.pathname.startsWith("/messages/") ||
+      window.location.pathname.startsWith("/compose/post")
+    );
   }
 
   // Function to create and style the pro message
@@ -63,7 +66,7 @@
   // Main function to initialize the script
   function init() {
     // Only run if we're not on a messages page
-    if (!isMessagesPage()) {
+    if (!isPageOk()) {
       hideTimeline();
       document.body.appendChild(createProMessage());
     }
